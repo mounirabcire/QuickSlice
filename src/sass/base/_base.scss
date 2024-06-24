@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Pacifico&display=swap");
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--white-color);
+    font-family: "Open Sans", sans-serif;
+    font-size: $text-size-base;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Pacifico", cursive;
+    line-height: 1.15;
+}
+
+h1 {
+    font-size: $text-size-5xl;
+}
+
+h2 {
+    font-size: $text-size-4xl;
+}
+
+h3 {
+    font-size: $text-size-3xl;
+}
+
+h4 {
+    font-size: $text-size-2xl;
+}
+
+h5 {
+    font-size: $text-size-xl;
+}
+
+ul {
+    list-style: none;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
