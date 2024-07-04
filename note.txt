@@ -1,0 +1,5 @@
+1- framer motion
+ - useScroll - useTransform - useMotionValueEvent
+
+2- Gsap
+ - useGsap - scrollTrigger

@@ -12,12 +12,18 @@
     "compile:sass": "node-sass src/sass/main.scss src/css/style.com.css ",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.com.css -o css/style.prefix.css",
     "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "start": "npm-run-all watch:sass dev",
     "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
+    "framer-motion": "^11.2.12",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "remixicon": "^4.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

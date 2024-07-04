@@ -10,11 +10,16 @@
 
 html {
     font-size: 62.5%;
+
+    @media only screen and (max-width: 63.94em) {
+        font-size: 50%;
+    }
 }
 
 body {
+    overflow-x: hidden;
     background-color: var(--bg-color);
-    color: var(--white-color);
+    color: var(--black-color);
     font-family: "Open Sans", sans-serif;
     font-size: $text-size-base;
     font-weight: 400;
@@ -57,6 +62,7 @@ ul {
 
 a:link,
 a:visited {
+    display: inline-block;
     text-decoration: none;
     color: inherit;
 }

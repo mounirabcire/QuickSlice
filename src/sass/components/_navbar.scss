@@ -1,0 +1,211 @@
+.nav {
+    &__checkbox {
+        display: none;
+    }
+
+    width: 100vw;
+    padding: 3rem 0 1.5rem;
+    background-color: var(--bg-color);
+    font-family: "Pacifico", cursive;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 12rem;
+
+        @media only screen and (max-width: 80em) {
+            gap: 6rem;
+        }
+    }
+
+    &__list {
+        @media only screen and (max-width: 63.94em) {
+            width: 35%;
+            height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: var(--fg-color);
+            color: var(--bg-color);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        @media only screen and (max-width: 48em) {
+            width: 80%;
+        }
+
+        &--mob {
+            display: none;
+
+            @media only screen and (max-width: 63.94em) {
+                display: flex;
+
+                .nav__input {
+                    padding-block: 1rem;
+                    align-self: center;
+                    border: none;
+                    background-color: var(--bg-color);
+                }
+
+                .btn {
+                    @media only screen and (max-width: 63.94em) {
+                        font-size: 1.62rem
+                    }
+                }
+            }
+        }
+
+        &--desk {
+            @media only screen and (max-width: 63.94em) {
+                display: none;
+            }
+        }
+    }
+
+    &__item {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 3rem;
+
+            @media only screen and (max-width: 80em) {
+                margin-right: 1.5rem;
+            }
+        }
+
+        a:link,
+        a:visited {
+            overflow: hidden;
+        }
+
+        span {
+            display: inline-block;
+        }
+
+        @media only screen and (max-width: 63.94em) {
+            font-size: 2.62rem;
+        }
+    }
+
+    &__btns-box {
+        overflow: hidden;
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    &__button {
+        display: none;
+
+        @media only screen and (max-width: 63.94em) {
+            display: block;
+            width: 5rem;
+            position: relative;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &,
+        &::before,
+        &::after {
+            display: block;
+            width: 3rem;
+            height: 2px;
+            background-color: var(--black-color);
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all 0.3s;
+        }
+
+        &::before {
+            top: -0.8rem;
+        }
+
+        &::after {
+            top: 0.8rem;
+        }
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: 63.94em) {
+            display: none;
+        }
+
+        .btn--primary {
+            margin-left: 3rem;
+
+            @media only screen and (max-width: 80em) {
+                margin-left: 1.5rem;
+            }
+        }
+
+        .btn--ghost {
+            margin-left: 6rem;
+
+            @media only screen and (max-width: 80em) {
+                margin-left: 3rem;
+            }
+        }
+    }
+
+    &__input {
+        padding: 0rem 1.6rem;
+        border: 2px solid var(--black-color);
+        border-radius: 5px;
+        font-size: inherit;
+        color: var(--black-color);
+        background-color: transparent;
+        align-self: stretch;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
