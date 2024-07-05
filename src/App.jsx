@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { CartProvider } from "./contexts/CartContext";
+
 import Lenis from "lenis";
 import AppLayout from "./components/AppLayout";
 import Homepage from "./Features/overview/Homepage";
@@ -28,7 +30,11 @@ function App() {
                 },
                 {
                     path: "/menu",
-                    element: <Meunupage />,
+                    element: (
+                        <CartProvider>
+                            <Meunupage />
+                        </CartProvider>
+                    ),
                     loader: menuLoader,
                 },
             ],
