@@ -88,6 +88,9 @@ function Navbar() {
 
     // Functions
     const toggleMenu = () => setMenuIsHidden((prev) => !prev);
+    const handleCheckboxChange = (event) => {
+        setMenuIsHidden(event.target.checked);
+    };
 
     return (
         <motion.nav
@@ -108,7 +111,10 @@ function Navbar() {
                     {/* Desktop version (links) */}
                     <ul className="nav__list nav__list--desk">
                         {dLinks.map((link, i) => (
-                            <li key={i} className={`nav__item nav__item--${i + 1}`}>
+                            <li
+                                key={i}
+                                className={`nav__item nav__item--${i + 1}`}
+                            >
                                 <Link to={link.path}> {link.name} </Link>
                             </li>
                         ))}
@@ -172,6 +178,7 @@ function Navbar() {
                                             className={`nav__item nav__item--${
                                                 i + 1
                                             }`}
+                                            onClick={toggleMenu}
                                         >
                                             <Link to={path}>
                                                 <motion.span
@@ -227,6 +234,8 @@ function Navbar() {
                     className="nav__checkbox"
                     id="nav-toggle"
                     aria-label="Toggle navigation menu"
+                    onChange={handleCheckboxChange}
+                    checked={!menuIsHidden}
                 />
                 <label
                     className="nav__button"

@@ -1,0 +1,99 @@
+.cart {
+    margin-top: calc(101px + 60px);
+    position: relative;
+
+    &__heading-2 {
+        padding: 0 0.5rem;
+        text-align: center;
+    }
+
+    &__list {
+        margin-bottom: 12rem;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        &:not(:last-child) {
+            margin-bottom: 3rem;
+        }
+
+        &--left {
+            display: flex;
+            align-items: end;
+            gap: 1rem;
+        }
+
+        &-img {
+            width: 15rem;
+            height: 15rem;
+            border-radius: 10px;
+            object-fit: cover;
+
+            @media only screen and (max-width: 47.93em) {
+                width: 8rem;
+                height: 8rem;
+            }
+        }
+
+        &-name {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        &-params {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+
+            &--left {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                button {
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    background-color: var(--white-color);
+                    color: var(--black-color);
+                    font-weight: 600;
+                    border: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+            }
+
+            .btn--primary {
+                border-radius: 5px;
+            }
+        }
+    }
+
+    &__btns {
+        margin-top: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+
+        .btn--primary {
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+
+        .btn--ghost {
+            border: 2px solid var(--black-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+    }
+}

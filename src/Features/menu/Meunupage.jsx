@@ -7,7 +7,7 @@ import { useCart } from "../../contexts/CartContext";
 function Meunupage() {
     const menuData = useLoaderData();
     const { cart } = useCart();
-    console.log(cart);
+
     const isEmpty = cart.length === 0;
     const pizzaQuantity =
         isEmpty || cart.reduce((acc, item) => (acc = acc + item.quantity), 0);
@@ -17,6 +17,7 @@ function Meunupage() {
             (acc, item) => (acc = acc + item.quantity * item.unitPrice),
             0
         );
+        
     return (
         <main className="menu">
             <h2 className="menu__heading-2 text-size-h4 mb-6">
@@ -41,7 +42,7 @@ function Meunupage() {
                     <p>${totalPrice}.00</p>
                 </div>
                 <div className="menu__summary--right">
-                    <Link className="btn btn--link">
+                    <Link className="btn btn--link" to={'/cart'}>
                         OPEN CART{" "}
                         <span>
                             <i className="ri-arrow-right-line"></i>

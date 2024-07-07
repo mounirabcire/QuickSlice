@@ -9,7 +9,9 @@ function MenuItem({ menu, num }) {
         : false;
     const ingredientsLength = ingredients.length;
     const item = {
-        ...menu,
+        id,
+        name,
+        unitPrice,
         quantity: 1,
         imageUrl: `src/assets/menu__img (${num}).jpg`,
     };

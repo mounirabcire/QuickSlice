@@ -15,25 +15,26 @@ function Header() {
     const sliceY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
     return (
-            <header className="header mb-12" ref={ref}>
-                <div className="header__box">
-                    <div className="header__text">
-                        <h1 className="header__heading-1 text-size-h3">
-                            Freshly <span>Baked</span>, Just for{" "}
-                            <span>You!</span>
-                        </h1>
-                        <Link className="btn btn--link">Discover our Menu</Link>
-                    </div>
-
-                    <motion.img
-                        src="src/assets/header-img-s.png"
-                        alt="Pizza"
-                        className="header__img"
-                        style={{ y: backgroundY, scale: backgroundScale }}
-                    />
+        <header className="header mb-12" ref={ref}>
+            <div className="header__box">
+                <div className="header__text">
+                    <h1 className="header__heading-1 text-size-h3">
+                        Freshly <span>Baked</span>, Just for <span>You!</span>
+                    </h1>
+                    <Link className="btn btn--link" to={"/menu"}>
+                        Discover our Menu
+                    </Link>
                 </div>
 
-                {/* <motion.img
+                <motion.img
+                    src="src/assets/header-img-s.png"
+                    alt="Pizza"
+                    className="header__img"
+                    style={{ y: backgroundY, scale: backgroundScale }}
+                />
+            </div>
+
+            {/* <motion.img
                     src={pizzaSlice}
                     alt="A slice of pizza"
                     className="header__slice header__slice--1"
@@ -69,7 +70,7 @@ function Header() {
                     className="header__slice header__slice--6"
                     style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
                 /> */}
-            </header>
+        </header>
     );
 }
 

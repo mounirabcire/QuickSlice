@@ -2,32 +2,46 @@ import { createContext, useContext, useReducer } from "react";
 
 const CartContext = createContext();
 const initialState = [];
+
+const addItemToCart = (state, payload) => {
+    return [...state, payload];
+};
+
+const deleteItemFromCart = (state, payload) => {
+    return state.filter((item) => item.id !== payload);
+};
+
+const updateItemQuantity = (state, payload, increment) => {
+    return state.map((item) =>
+        item.id === payload
+            ? { ...item, quantity: item.quantity + increment }
+            : item
+    );
+};
+
+const clearCart = () => {
+    return [];
+};
+
 const reducer = (state, action) => {
     switch (action.type) {
         case "cart/add":
-            return [...state, action.payload];
+            return addItemToCart(state, action.payload);
 
         case "cart/delete":
-            return state.filter((item) => item.id !== action.payload);
+            return deleteItemFromCart(state, action.payload);
 
         case "cart/addQuantity":
-            const stateUpdated = state.filter(
-                (item) => item.id !== action.payload
-            );
-            let item = state.find((item) => item.id === action.payload);
-            item = { ...item, quantity: item.quantity + 1 };
-            return [...stateUpdated, item];
+            return updateItemQuantity(state, action.payload, 1);
 
         case "cart/removeQuantity":
-            const stateUpdated_1 = state.filter(
-                (item) => item.id !== action.payload
-            );
-            let item_1 = state.find((item) => item.id === action.payload);
-            item_1 = { ...item_1, quantity: item_1.quantity - 1 };
-            return [...stateUpdated_1, item_1];
+            return updateItemQuantity(state, action.payload, -1);
+
+        case "cart/clear":
+            return clearCart();
 
         default:
-            throw new Error(`Unkown action type: ${action.type}`);
+            throw new Error(`Unknown action type: ${action.type}`);
     }
 };
 
@@ -44,7 +58,7 @@ function CartProvider({ children }) {
 function useCart() {
     const context = useContext(CartContext);
     if (!context)
-        throw new Error("The context is used outside of its provider! ");
+        throw new Error("The context is used outside of its provider!");
 
     return context;
 }

@@ -1,0 +1,38 @@
+.err-message__container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message {
+    max-width: max-content;
+    margin: 0 auto;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 900;
+    box-shadow: 5px 5px 0px var(--black-color);
+
+    &__empty {
+        background-color: var(--fg-color);
+        color: var(--bg-color);
+    }
+
+    &__error {
+        background-color: var(--red-color);
+        color: var(--white-color);
+    }
+
+    &__success{
+        background-color: var(--base-color);
+        color: var(--white-color);
+    }
+
+    &__m-0{
+        margin: 0;
+    }
+}
