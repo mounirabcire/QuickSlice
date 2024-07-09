@@ -24,7 +24,7 @@ function Header() {
                 </div>
 
                 <motion.img
-                    src="../../assets/header-img-s.png"
+                    src="/assets/header-img-s.png"
                     alt="Pizza"
                     className="header__img"
                     style={{ y: backgroundY, scale: backgroundScale }}
