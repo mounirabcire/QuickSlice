@@ -2,8 +2,6 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-import pizzaSlice from "../../assets/pizza-slice.svg";
-
 function Header() {
     const ref = useRef();
     const { scrollYProgress } = useScroll({
@@ -12,7 +10,6 @@ function Header() {
     });
     const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
     const backgroundScale = useTransform(scrollYProgress, [0, 1], [1.2, 0.8]);
-    const sliceY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
     return (
         <header className="header mb-12" ref={ref}>
@@ -27,49 +24,12 @@ function Header() {
                 </div>
 
                 <motion.img
-                    src="src/assets/header-img-s.png"
+                    src="../../assets/header-img-s.png"
                     alt="Pizza"
                     className="header__img"
                     style={{ y: backgroundY, scale: backgroundScale }}
                 />
             </div>
-
-            {/* <motion.img
-                    src={pizzaSlice}
-                    alt="A slice of pizza"
-                    className="header__slice header__slice--1"
-                    style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
-                />
-                <motion.img
-                    src={pizzaSlice}
-                    alt="A slice of pizza"
-                    className="header__slice header__slice--2"
-                    style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
-                />
-                <motion.img
-                    src={pizzaSlice}
-                    alt="A slice of pizza"
-                    className="header__slice header__slice--3"
-                    style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
-                />
-                <motion.img
-                    src={pizzaSlice}
-                    alt="A slice of pizza"
-                    className="header__slice header__slice--4"
-                    style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
-                />
-                <motion.img
-                    src={pizzaSlice}
-                    alt="A slice of pizza"
-                    className="header__slice header__slice--5"
-                    style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
-                />
-                <motion.img
-                    src={pizzaSlice}
-                    alt="A slice of pizza"
-                    className="header__slice header__slice--6"
-                    style={{y: sliceY, rotate: (Math.random() * 360) + 1, scale: (Math.random() * 0.6) + 0.25 }}
-                /> */}
         </header>
     );
 }

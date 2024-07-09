@@ -2,7 +2,6 @@ import { Form, redirect, useActionData, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 import { formatCurrency, isValidPhone } from "../../utils/helpers";
-// import { createOrder } from "../../services/apiRestaurant";
 import { useState } from "react";
 
 function CreateOrder() {
