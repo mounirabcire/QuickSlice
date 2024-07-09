@@ -16,7 +16,7 @@ function AppLayout() {
             ) : (
                 <>
                     <Outlet />
-                    {(pathname !== "/signup" && pathname !== "/login") && (
+                    {pathname !== "/register" && pathname !== "/order/new" && (
                         <Footer />
                     )}
                 </>

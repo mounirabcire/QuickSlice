@@ -1,3 +1,5 @@
+import { formatCurrency } from "../../utils/helpers";
+
 function CartItem({ item, dispatch }) {
     const { id, imageUrl, name, quantity, unitPrice } = item;
 
@@ -17,7 +19,9 @@ function CartItem({ item, dispatch }) {
                         <br />
                         <span>X {quantity}</span>
                     </p>
-                    <p className="cart__item-price">${unitPrice * quantity}</p>
+                    <p className="cart__item-price">
+                        {formatCurrency(unitPrice * quantity)}
+                    </p>
                 </div>
             </div>
             <div className="cart__item--right">

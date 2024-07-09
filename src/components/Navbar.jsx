@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     AnimatePresence,
     motion,
     useMotionValueEvent,
     useScroll,
 } from "framer-motion";
+import { useAuth } from "../contexts/AuthContext";
 
 // Desktop version
 const dLinks = [
     { path: "/", name: "Home" },
     { path: "/menu", name: "Menu" },
     { path: "/cart", name: "Cart" },
-    { path: "/Order", name: "Order" },
+    { path: "/order/new", name: "Order" },
 ];
 // Mobile version
 const mLinks = [
@@ -56,7 +57,7 @@ const mLinks = [
         },
     },
     {
-        path: "/Order",
+        path: "/order/new",
         name: "Order",
         animation: {
             initial: { y: "100%" },
@@ -74,6 +75,11 @@ function Navbar() {
     // Hooks
     const [isHidden, setIsHidden] = useState(false);
     const [menuIsHidden, setMenuIsHidden] = useState(true);
+    const navigate = useNavigate();
+    const {
+        user: { isAuth },
+        dispatch,
+    } = useAuth();
     const { scrollY } = useScroll();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
@@ -91,6 +97,10 @@ function Navbar() {
     const handleCheckboxChange = (event) => {
         setMenuIsHidden(event.target.checked);
     };
+    const handleLogout = () => {
+        dispatch({ type: "auth/logout" });
+        navigate("/");
+    };
 
     return (
         <motion.nav
@@ -105,7 +115,12 @@ function Navbar() {
             <div className="container">
                 <div className="nav__left">
                     <div className="nav__logo-box">
-                        <h3 className="nav__logo text-size-h5">QuickSlice</h3>
+                        <h3
+                            className="nav__logo text-size-h5"
+                            onClick={() => navigate("/")}
+                        >
+                            QuickSlice
+                        </h3>
                     </div>
 
                     {/* Desktop version (links) */}
@@ -149,26 +164,6 @@ function Navbar() {
                                     ease: [0.25, 1, 0.5, 1],
                                 }}
                             >
-                                <motion.input
-                                    type="text"
-                                    className="nav__input"
-                                    placeholder="Search Order #"
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    exit={{
-                                        scale: 0,
-                                        transition: {
-                                            duration: 0.5,
-                                            ease: [0.25, 1, 0.5, 1],
-                                        },
-                                    }}
-                                    transition={{
-                                        delay: 0.75,
-                                        duration: 0.5,
-                                        ease: [0.25, 1, 0.5, 1],
-                                    }}
-                                />
-
                                 {mLinks.map((link, i) => {
                                     const { path, name, animation } = link;
 
@@ -216,12 +211,22 @@ function Navbar() {
                                             ease: [0.25, 1, 0.5, 1],
                                         }}
                                     >
-                                        <button className="btn btn--ghost">
-                                            Log in
-                                        </button>
-                                        <button className="btn btn--primary">
-                                            Sign up
-                                        </button>
+                                        {isAuth ? (
+                                            <button
+                                                className="btn btn--red"
+                                                onClick={handleLogout}
+                                            >
+                                                Log out
+                                            </button>
+                                        ) : (
+                                            <Link
+                                                onClick={toggleMenu}
+                                                className="btn btn--primary"
+                                                to="/register"
+                                            >
+                                                Register
+                                            </Link>
+                                        )}
                                     </motion.div>
                                 </div>
                             </motion.ul>
@@ -245,13 +250,17 @@ function Navbar() {
                     <span className="nav__icon"></span>
                 </label>
                 <div className="nav__right">
-                    <input
-                        type="text"
-                        className="nav__input"
-                        placeholder="Search Order #"
-                    />
-                    <button className="btn btn--ghost">Log in</button>
-                    <button className="btn btn--primary">Sign up</button>
+                    {isAuth ? (
+                        <button className="btn btn--red" onClick={handleLogout}>
+                            Log out
+                        </button>
+                    ) : (
+                        <>
+                            <Link className="btn btn--primary" to="/register">
+                                Register
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
         </motion.nav>

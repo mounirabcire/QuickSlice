@@ -1,18 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
 import CartList from "./CartList";
 
 function Cartpage() {
+    const navigate = useNavigate();
     const { cart, dispatch } = useCart();
 
     const isEmpty = cart.length === 0;
-    const totalPrice =
-        isEmpty ||
-        cart.reduce(
-            (acc, item) => (acc = acc + item.quantity * item.unitPrice),
-            0
-        );
-    console.log(cart);
 
     return (
         <main className="cart">
@@ -34,8 +28,11 @@ function Cartpage() {
 
                 {!isEmpty && (
                     <div className="cart__btns">
-                        <button className="btn btn--primary">
-                            Order for ${totalPrice}
+                        <button
+                            className="btn btn--primary"
+                            onClick={() => navigate("/order/new")}
+                        >
+                            Next
                         </button>
                         <button
                             className="btn btn--ghost"

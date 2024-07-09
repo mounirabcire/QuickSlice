@@ -3,6 +3,7 @@ import { getMenu } from "../../services/apiRestaurant";
 import MenuList from "./MenuList";
 import { motion } from "framer-motion";
 import { useCart } from "../../contexts/CartContext";
+import { formatCurrency } from "../../utils/helpers";
 
 function Meunupage() {
     const menuData = useLoaderData();
@@ -39,7 +40,7 @@ function Meunupage() {
             >
                 <div className="menu__summary--left">
                     <p>{pizzaQuantity} Pizza</p>
-                    <p>${totalPrice}.00</p>
+                    <p>{formatCurrency(totalPrice)}</p>
                 </div>
                 <div className="menu__summary--right">
                     <Link className="btn btn--link" to={'/cart'}>

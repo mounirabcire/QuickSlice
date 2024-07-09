@@ -1,4 +1,5 @@
 import { useCart } from "../../contexts/CartContext";
+import { formatCurrency } from "../../utils/helpers";
 
 function MenuItem({ menu, num }) {
     const { cart, dispatch } = useCart();
@@ -23,7 +24,10 @@ function MenuItem({ menu, num }) {
     }
 
     return (
-        <div className="menu__item">
+        <div
+            className="menu__item"
+            style={{ filter: `${soldOut ? "grayscale(100%)" : ""}` }}
+        >
             <img
                 src={`src/assets/menu__img (${num}).jpg`}
                 alt="A pizza"
@@ -42,7 +46,9 @@ function MenuItem({ menu, num }) {
                             </span>
                         ))}
                     </p>
-                    <p className="menu__info-price">${unitPrice}.00</p>
+                    <p className="menu__info-price">
+                        {formatCurrency(unitPrice)}
+                    </p>
                 </div>
 
                 <div className="menu__info-left">
@@ -52,8 +58,9 @@ function MenuItem({ menu, num }) {
                             onClick={() =>
                                 dispatch({ type: "cart/add", payload: item })
                             }
+                            disabled={soldOut}
                         >
-                            Add
+                            {soldOut ? "Sold out" : "Add"}
                         </button>
                     ) : (
                         <div className="menu__info-params">

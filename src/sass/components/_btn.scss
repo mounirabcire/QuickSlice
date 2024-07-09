@@ -13,6 +13,14 @@
         border-radius: 10px 0;
     }
 
+    &--red{
+        display: inline-block;
+        font-family: inherit;
+        color: var(--white-color);
+        background-color: var(--red-color);
+        border-radius: 10px 0;
+    }
+
     &--ghost {
         font-family: inherit;
         background-color: transparent;
