@@ -14,7 +14,7 @@ function MenuItem({ menu, num }) {
         name,
         unitPrice,
         quantity: 1,
-        imageUrl: `src/assets/menu__img (${num}).jpg`,
+        imageUrl: `/assets/menu__img (${num}).jpg`,
     };
 
     function checkQuantity() {
@@ -29,7 +29,7 @@ function MenuItem({ menu, num }) {
             style={{ filter: `${soldOut ? "grayscale(100%)" : ""}` }}
         >
             <img
-                src={`src/assets/menu__img (${num}).jpg`}
+                src={`/assets/menu__img (${num}).jpg`}
                 alt="A pizza"
                 className="menu__pizza-img"
             />

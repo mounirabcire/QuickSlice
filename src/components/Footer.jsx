@@ -27,7 +27,7 @@ function Footer() {
             <div className="footer__img-box">
                 <div className="footer__overlay" />
                 <img
-                    src="src/assets/footer-img.png"
+                    src="/assets/footer-img.png"
                     alt="Chef"
                     className="footer__img"
                 />

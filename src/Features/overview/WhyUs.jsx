@@ -88,7 +88,7 @@ function WhyUs() {
         <section className="whyus" ref={container}>
             <div className="whyus__img-box">
                 <img
-                    src="src/assets/chef.png"
+                    src="/assets/chef.png"
                     alt="chef"
                     className="whyus__img"
                 />
