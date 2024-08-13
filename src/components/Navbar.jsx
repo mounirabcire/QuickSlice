@@ -13,7 +13,6 @@ const dLinks = [
     { path: "/", name: "Home" },
     { path: "/menu", name: "Menu" },
     { path: "/cart", name: "Cart" },
-    { path: "/order/new", name: "Order" },
 ];
 // Mobile version
 const mLinks = [
@@ -46,19 +45,6 @@ const mLinks = [
     {
         path: "/cart",
         name: "Cart",
-        animation: {
-            initial: { y: "100%" },
-            animate: { y: 0 },
-            exit: {
-                y: "-100%",
-                opacity: 0,
-                transition: { duration: 0.3 },
-            },
-        },
-    },
-    {
-        path: "/order/new",
-        name: "Order",
         animation: {
             initial: { y: "100%" },
             animate: { y: 0 },
